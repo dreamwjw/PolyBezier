@@ -1,0 +1,32 @@
+﻿生成启动时间为 2018/3/25 8:41:41。
+     1>项目“D:\VS2010_project\钢笔工具\钢笔工具\钢笔工具.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“Debug\钢笔工具.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         所有输出均为最新。
+         e:\exe\vs2010\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _MBCS /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\钢笔工具.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt "钢笔工具Dlg.cpp"
+         钢笔工具Dlg.cpp
+       ResourceCompile:
+         所有输出均为最新。
+       ManifestResourceCompile:
+         所有输出均为最新。
+       Link:
+         e:\exe\vs2010\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\VS2010_project\钢笔工具\Debug\钢笔工具.exe" /INCREMENTAL /NOLOGO /MANIFEST /ManifestFile:"Debug\钢笔工具.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\VS2010_project\钢笔工具\Debug\钢笔工具.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\VS2010_project\钢笔工具\Debug\钢笔工具.lib" /MACHINE:X86 "Debug\钢笔工具.res"
+         "Debug\钢笔工具.exe.embed.manifest.res"
+         Debug\stdafx.obj
+         "Debug\钢笔工具.obj"
+         "Debug\钢笔工具Dlg.obj"
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\钢笔工具.exe.embed.manifest" /manifest "Debug\钢笔工具.exe.intermediate.manifest" e:\exe\vs2010\VC\Include\Manifest\dpiaware.manifest
+         所有输出均为最新。
+       LinkEmbedManifest:
+         所有输出均为最新。
+         钢笔工具.vcxproj -> D:\VS2010_project\钢笔工具\Debug\钢笔工具.exe
+       FinalizeBuildStatus:
+         正在删除文件“Debug\钢笔工具.unsuccessfulbuild”。
+         正在对“Debug\钢笔工具.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“D:\VS2010_project\钢笔工具\钢笔工具\钢笔工具.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:00.42
