@@ -25,6 +25,10 @@ C钢笔工具Dlg::C钢笔工具Dlg(CWnd* pParent /*=NULL*/)
 	m_bThreadDrawTutorialStop = true;
 	m_hThreadDrawTutorial = NULL;
 	m_bPlayDrawTutorial = false;
+	m_clrBackground = RGB(57,63,67);
+	m_clrGraphic=RGB(40,50,50);
+	m_clrLine=RGB(96,102,104);
+	m_clrDraw=RGB(255,255,255);
 }
 
 void C钢笔工具Dlg::DoDataExchange(CDataExchange* pDX)
@@ -83,6 +87,7 @@ void C钢笔工具Dlg::OnPaint()
 	}
 	else
 	{
+		DrawBackground(&dc);
 		DrawGraphics(&dc, m_ucDTtype);
 		m_bPlayDrawTutorial = true;
 
@@ -97,22 +102,39 @@ HCURSOR C钢笔工具Dlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+void C钢笔工具Dlg::DrawBackground(CDC* pDC)
+{
+	CRect rect;
+	GetClientRect(&rect);
+	pDC->FillSolidRect(&rect, m_clrBackground);
+}
+
 void C钢笔工具Dlg::DrawGraphics(CDC* pDC, unsigned char ucDTtype)
 {
 	switch(ucDTtype)
 	{
 	case LINE:
 		{
-			CPen pen(PS_SOLID, 10, RGB(50,50,50));
+			int nPenWidth = 10, nRectangleWidth = 5;
+
+			CPen pen(PS_SOLID, nPenWidth, m_clrGraphic);
 			CPen* pOldPen = pDC->SelectObject(&pen);
 
 			pDC->MoveTo(300, 200);
 			pDC->LineTo(600, 200);
-			pDC->Ellipse(300-5, 200-5, 300+5, 200+5);
+			pDC->Ellipse(300-nRectangleWidth, 200-nRectangleWidth, 300+nRectangleWidth, 200+nRectangleWidth);
 			pDC->LineTo(600, 500);
-			pDC->Ellipse(600-5, 500-5, 600+5, 500+5);
+			pDC->Ellipse(600-nRectangleWidth, 500-nRectangleWidth, 600+nRectangleWidth, 500+nRectangleWidth);
 
 			pDC->SelectObject(pOldPen);
+
+			//HGDIOBJ pOldGdiobj = pDC->SelectStockObject(NULL_BRUSH);
+			//CRect rect(300-nRectangleWidth, 200-nRectangleWidth, 300+nRectangleWidth, 200+nRectangleWidth);
+			//CPoint p1()
+			//pDC->Arc()
+			////AngleArc(pDC->m_hDC,600,500,nRectangleWidth,240,300);
+
+			//pDC->SelectObject(pOldGdiobj);
 		}
 		break;
 	case POLYGON:
@@ -130,13 +152,23 @@ void C钢笔工具Dlg::DrawTutorial(CDC* pDC, unsigned char ucDTtype)
 	{
 	case LINE:
 		{
-			CPen pen(PS_SOLID, 5, RGB(0,0,255));
+			int nPenWidth = 2, nRectangleWidth = 2;
+
+			CPen pen(PS_SOLID, nPenWidth, m_clrLine);
 			CPen* pOldPen = pDC->SelectObject(&pen);
 
-			pDC->Rectangle(300-3, 200-3, 300+3, 200+3);
-			pDC->Rectangle(600-3, 200-3, 600+3, 200+3);
-			pDC->Rectangle(600-3, 500-3, 600+3, 500+3);
+			pDC->MoveTo(300, 200);
+			pDC->LineTo(600, 200);
+			pDC->LineTo(600, 500);
 
+			CRect rect1(300-nRectangleWidth, 200-nRectangleWidth, 300+nRectangleWidth, 200+nRectangleWidth),
+				rect2(600-nRectangleWidth, 200-nRectangleWidth, 600+nRectangleWidth, 200+nRectangleWidth),
+				rect3(600-nRectangleWidth, 500-nRectangleWidth, 600+nRectangleWidth, 500+nRectangleWidth);
+			pDC->FillSolidRect(&rect1, m_clrLine);
+			pDC->FillSolidRect(&rect2, m_clrLine);
+			pDC->FillSolidRect(&rect3, m_clrLine);
+
+			//一条贝塞尔线最少要有 4 个点
 			/*int nCount = 3;
 			POINT* pts = new POINT[nCount];  
 			pts[0].x = 300;  
@@ -147,10 +179,6 @@ void C钢笔工具Dlg::DrawTutorial(CDC* pDC, unsigned char ucDTtype)
 			pts[2].y = 500;  
 			PolyBezier(pDC->m_hDC, pts, nCount);  
 			delete [] pts; */
-
-			pDC->MoveTo(300, 200);
-			pDC->LineTo(600, 200);
-			pDC->LineTo(600, 500);
 
 			pDC->SelectObject(pOldPen);
 		}

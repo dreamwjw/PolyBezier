@@ -29,11 +29,13 @@ private:
 	bool m_bThreadDrawTutorialStop;
 	HANDLE m_hThreadDrawTutorial;
 	bool m_bPlayDrawTutorial;
+	COLORREF m_clrBackground,m_clrGraphic,m_clrLine,m_clrDraw;
 
 private:
 	void DrawGraphics(CDC* pDC, unsigned char ucDTtype);
 	void DrawTutorial(CDC* pDC, unsigned char ucDTtype);
 	void StopThreadDrawTutorial();
+	void DrawBackground(CDC* pDC);
 
 private:
 	static UINT ThreadDrawTutorial(LPVOID lpVoid);
